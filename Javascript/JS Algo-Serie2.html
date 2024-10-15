@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms Serie 2</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f2de;
+        }
+        code {
+            background-color: #151b23;
+        }
+        pre {
+            display: block;
+            background-color: #151b23;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="exercise-00-count-true">Exercise 00: Count True</h1>
+<p>Create a function which returns the number of true values there are in an array.<br>Notes:</p>
+<ul>
+<li>Return 0 if given an empty array.</li>
+<li>All array items are of the type bool (true or false).</li>
+</ul>
+<pre><code>function countTrue(arr){
+    let count = 0;
+    for(let i of arr){
+        if(i) count ++
+    }
+    return count;
+}
+
+console.log(countTrue([true, false, false, true, false])); // 2
+
+console.log(countTrue([false, false, false, false])); // 0
+
+console.log(countTrue([])); // 0
+</code></pre>
+<h1 id="exercise-01-boardgame-bonus">Exercise 01: Boardgame Bonus</h1>
+<p>In a board game, a piece may advance 1-6 tiles forward depending on the number rolled on a six-sided die. If you advance your piece onto the same tile as another player&#39;s piece, both of you earn a bonus.</p>
+<p>Can you reach your friend&#39;s tile number in the next roll? Create a function that takes your position a and your friend&#39;s position b and returns a boolean representation of whether it&#39;s possible to earn a bonus on any die roll.</p>
+<p>Notes:</p>
+<ul>
+<li>You cannot move backward (which is why example #3 doesn&#39;t work).</li>
+<li>If you are already on the same tile, return false, as you would be advancing away.</li>
+<li>Expect only positive integer inputs.</li>
+</ul>
+<pre><code>function possibleBonus(p1,p2){
+    return p2 - p1 &lt;= 6 &amp;&amp; p1 &lt; p2;
+}
+
+console.log(possibleBonus(3, 7)); // true
+
+console.log(possibleBonus(1, 9)); // false
+
+console.log(possibleBonus(5, 3)); // false
+</code></pre>
+<h1 id="exercise-02-number-of-digits">Exercise 02: Number of Digits</h1>
+<p>Create a function that will return an integer number corresponding to the amount of digits in the given integer num.    </p>
+<pre><code>function num_of_digits(number){
+    return number.toString().length;
+}
+
+console.log(num_of_digits(1000)); // 4
+
+console.log(num_of_digits(12)); // 2
+
+console.log(num_of_digits(1305981031)); // 10
+
+console.log(num_of_digits(0)); // 1
+</code></pre>
+<h1 id="exercise-03-object-into-array">Exercise 03: Object into Array</h1>
+<p>Write a function that converts an object into an array, where each element represents a key-value pair in the form of an array.</p>
+<p>Notes:<br>Return an empty array if the object is empty.</p>
+<pre><code>function toArray(obj){
+    const arr =[];
+    for(let key in obj){
+        const a = [];
+        a.push(key, obj[key]);
+        arr.push(a);
+    }
+    return arr;
+}
+
+console.log(toArray({ a: 1, b: 2 })); // [[&quot;a&quot;, 1], [&quot;b&quot;, 2]]
+
+console.log(toArray({ shrimp: 15, tots: 12 })); // [[&quot;shrimp&quot;, 15], [&quot;tots&quot;, 12]]
+
+console.log(toArray({})); // []
+</code></pre>
+<h1 id="exercise-04-array-of-multiples">Exercise 04: Array of Multiples</h1>
+<p>Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num until the array length reaches length.</p>
+<p>Notes<br>Notice that num is also included in the returned array.</p>
+<pre><code>function arrayOfMultiples(num,length){
+    const arr = [];
+    for(let i = 1; i &lt;= length; i++){
+        arr.push(num * i);
+    }
+    return arr;
+}
+
+console.log(arrayOfMultiples(7, 5)); // [7, 14, 21, 28, 35]
+
+console.log(arrayOfMultiples(12, 10)); // [12, 24, 36, 48, 60, 72, 84, 96, 108, 120]
+
+console.log(arrayOfMultiples(17, 6)); // [17, 34, 51, 68, 85, 102]
+</code></pre>
+<h1 id="exercise-05-remove-0">Exercise 05: Remove 0</h1>
+<p>Create a function that takes in a number as a string n and returns the number without trailing and leading zeros.</p>
+<ul>
+<li>Trailing Zeros are the zeros after a decimal point which don&#39;t affect the value (e.g. the last three zeros in 3.4000 and 3.04000).</li>
+<li>Leading Zeros are the zeros before a whole number which don&#39;t affect the value (e.g. the first three zeros in 000234 and 000230).</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>Return a string.</li>
+<li>If you get a number with .0 on the end, return the integer value (e.g. return &quot;4&quot; rather than &quot;4.0&quot;).</li>
+<li>If the number is 0, 0.0, 000, 00.00, etc... return &quot;0&quot;.</li>
+</ul>
+<pre><code>function removeLeadingTrailing(number){
+    return parseFloat(number);
+}
+
+console.log(removeLeadingTrailing(&quot;230.000&quot;)); // &quot;230&quot;
+
+console.log(removeLeadingTrailing(&quot;00402&quot;)); // &quot;402&quot;
+
+console.log(removeLeadingTrailing(&quot;03.1400&quot;)); // &quot;3.14&quot;
+
+console.log(removeLeadingTrailing(&quot;30&quot;)); // &quot;30&quot;
+</code></pre>
+<h1 id="exercise-06-sort-nested-arrays">Exercise 06: Sort Nested Arrays</h1>
+<p>In this challenge you will be given an array similar to the following:</p>
+<p><code>[[3], 4, [2], [5], 1, 6]</code></p>
+<p>In words, elements of the array are either an integer or an array containing a single integer. We humans can clearly see that this array can reasonably be sorted according to &quot;the content of the elements&quot; as:</p>
+<p><code>[1, [2], [3], 4, [5], 6]</code></p>
+<p>Create a function that, given an array similar to the above, sorts the array according to the &quot;content of the elements&quot;.</p>
+<p>Notes<br>To reiterate, elements of the array will be either integers or arrays with a single integer.</p>
+<pre><code>function sortIt(arr){
+    return arr.sort((a, b) =&gt; a - b);
+}
+
+console.log(sortIt([4, 1, 3])); // [1, 3, 4]
+
+console.log(sortIt([[4], [1], [3]])); // [[1], [3], [4]]
+
+console.log(sortIt([4, [1], 3])); // [[1], 3, 4]
+
+console.log(sortIt([[4], 1, [3]])); // [1, [3], [4]]
+
+console.log(sortIt([[3], 4, [2], [5], 1, 6])); // [1, [2], [3], 4, [5], 6]
+</code></pre>
+<h1 id="exercise-07-calculator">Exercise 07: Calculator</h1>
+<p>Create a function that takes two numbers and a mathematical operator + - / * and will perform a calculation with the given numbers.</p>
+<p>Notes
+If the input tries to divide by 0, return: &quot;Can&#39;t divide by 0!&quot;</p>
+<pre><code>function calculator(x, operator, y){
+    switch (operator){
+        case &#39;+&#39;:
+            return x + y;
+        case &#39;-&#39;:
+            return x - y;
+        case &#39;*&#39;:
+            return x * y;
+        case &#39;/&#39;:
+            if(y === 0) return  `Can&#39;t divide by 0!`
+            return x / y;
+        default:
+            return &#39;Invalid Operator&#39;;
+    };
+};
+
+console.log(calculator(2, &quot;+&quot;, 2)); // 4
+
+console.log(calculator(2, &quot;*&quot;, 2)); // 4
+
+console.log(calculator(4, &quot;/&quot;, 2)); // 2
+
+console.log(calculator(3, &quot;/&quot;, 0)); // `Can&#39;t divide by 0!`
+</code></pre>
+<h1 id="exercise-08-area-of-country">Exercise 08: Area of Country</h1>
+<p>Create a function that takes a country&#39;s name and its area as arguments and returns the area of the country&#39;s proportion of the total world&#39;s landmass.</p>
+<p>Notes  </p>
+<ul>
+<li>The total world&#39;s landmass is 148,940,000 [Km^2]</li>
+<li>Round the result to two decimal places.</li>
+</ul>
+<pre><code>function areaOfCountry(country, area){
+    const worldLandmass = 148940000;
+    const landPercent = area / worldLandmass * 100 ;
+    return  `${country} is ${landPercent.toFixed(2)}% of the total world&#39;s landmass`;
+}
+
+console.log(areaOfCountry(&quot;Russia&quot;, 17098242)); // &quot;Russia is 11.48% of the total world&#39;s landmass&quot;
+
+console.log(areaOfCountry(&quot;USA&quot;, 9372610);) // &quot;USA is 6.29% of the total world&#39;s landmass&quot;
+
+console.log(areaOfCountry(&quot;Iran&quot;, 1648195)); // &quot;Iran is 1.11% of the total world&#39;s landmass&quot;
+</code></pre>
+<h1 id="exercise-09-reverse-words">Exercise 09: Reverse Words</h1>
+<p>Given an input string, reverse the string word by word, the first word will be the last, and so on.</p>
+<p>Notes  </p>
+<ul>
+<li>A word is defined as a sequence of non-space characters.</li>
+<li>The input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.</li>
+<li>You need to reduce multiple spaces between two words to a single space in the reversed string.</li>
+</ul>
+<pre><code>function reverseWords(str){
+    return str.trim().split(&#39; &#39;).filter((a) =&gt; a.length &gt; 0).reverse().join(&#39; &#39;);
+}
+
+console.log(reverseWords(&quot; the sky is blue&quot;)); // &quot;blue is sky the&quot;
+
+console.log(reverseWords(&quot;hello   world!  &quot;)); // &quot;world! hello&quot;
+
+console.log(reverseWords(&quot;a good example&quot;)); // &quot;example good a&quot;
+</code></pre>
+
+</body>
+</html>

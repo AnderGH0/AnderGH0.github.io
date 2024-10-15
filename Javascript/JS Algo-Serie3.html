@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms Serie 3</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f2de;
+        }
+        code {
+            background-color: #151b23;
+        }
+        pre {
+            display: block;
+            background-color: #151b23;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="exercise-00-oddish-and-evenish-numbers">Exercise 00: Oddish and Evenish Numbers</h1>
+<p>Create a function that determines whether a number is Oddish or Evenish. A number is Oddish if the sum of all of its digits is odd, and a number is Evenish if the sum of all of its digits is even. If a number is Oddish, return &quot;Oddish&quot;. Otherwise, return &quot;Evenish&quot;.</p>
+<p>For example, oddishOrEvenish(121) should return &quot;Evenish&quot;, since 1 + 2 + 1 = 4. oddishOrEvenish(41) should return &quot;Oddish&quot;, since 4 + 1 = 5.</p>
+<pre><code>function oddishOrEvenish(number){
+    let sum = 0;
+    for(let letter of number.toString()){
+        sum += parseInt(letter);
+    }
+    return sum % 2 === 0 ? &quot;Evenish&quot;: &quot;Oddish&quot;;
+}
+
+console.log(oddishOrEvenish(43)); // &quot;Oddish&quot;
+// 4 + 3 = 7
+// 7 % 2 = 1
+
+console.log(oddishOrEvenish(373)); // &quot;Oddish&quot;
+// 3 + 7 + 3 = 13
+// 13 % 2 = 1
+
+console.log(oddishOrEvenish(4433)); // &quot;Evenish&quot;
+// 4 + 4 + 3 + 3 = 14
+// 14 % 2 = 0
+</code></pre>
+<h1 id="exercise-01-total-price-of-groceries">Exercise 01: Total Price of Groceries</h1>
+<p>Create a function that takes an array of objects (groceries) which calculates the total price and returns it as a number.</p>
+<pre><code>function getTotalPrice(groceries){
+    let total = 0;
+    for(let product of groceries){
+        total += product.quantity * product.price;
+        total *=1
+    }
+    return total.toFixed(2); //I added a toFixed() here because for the 4th test the it gives me 0.30000000000000004 
+}
+
+// 1 bottle of milk:
+console.log(getTotalPrice([
+    { product: &quot;Milk&quot;, quantity: 1, price: 1.50 }
+])); // 1.5
+
+// 1 bottle of milk &amp; 1 box of cereals:
+console.log(getTotalPrice([
+    { product: &quot;Milk&quot;, quantity: 1, price: 1.50 },
+    { product: &quot;Cereals&quot;, quantity: 1, price: 2.50 }
+])); // 4
+
+// 3 bottles of milk:
+console.log(getTotalPrice([
+    { product: &quot;Milk&quot;, quantity: 3, price: 1.50 }
+])); // 4.5
+
+// Several groceries:
+console.log(getTotalPrice([
+    { product: &quot;Milk&quot;, quantity: 1, price: 1.50 },
+    { product: &quot;Eggs&quot;, quantity: 12, price: 0.10 },
+    { product: &quot;Bread&quot;, quantity: 2, price: 1.60 },
+    { product: &quot;Cheese&quot;, quantity: 1, price: 4.50 }
+])); // 10.4
+
+// Some cheap candy:
+console.log(getTotalPrice([
+    { product: &quot;Chocolate&quot;, quantity: 1, price: 0.10 },
+    { product: &quot;Lollipop&quot;, quantity: 1, price: 0.20 }
+])); // 0.3
+</code></pre>
+<h1 id="exercise-02-reverse-odd-length-words">Exercise 02: Reverse Odd Length Words</h1>
+<p>Given a string, reverse all the words which have odd length. The even length words are not changed.</p>
+<p>Notes<br>There is exactly one space between each word and no punctuation is used.</p>
+<pre><code>function reverseOdd(str){
+    str = str.split(&#39; &#39;);
+    for(let i = 0; i &lt; str.length; i++){
+        if(str[i].length % 2 !== 0) {
+            str[i] = str[i].split(&#39;&#39;).reverse().join(&#39;&#39;);
+        }
+    }
+    return str.join(&#39; &#39;);
+}
+
+console.log(reverseOdd(&quot;Bananas&quot;)); // &quot;sananaB&quot;
+
+console.log(reverseOdd(&quot;One two three four&quot;)); // &quot;enO owt eerht four&quot;
+
+console.log(reverseOdd(&quot;Make sure uoy only esrever sdrow of ddo length&quot;)); // &quot;Make sure you only reverse words of odd length&quot;
+</code></pre>
+<h1 id="exercise-03-smooth-sentences">Exercise 03: Smooth Sentences</h1>
+<p>Carlos is a huge fan of something he calls smooth sentences.  </p>
+<p>A smooth sentence is one where the last letter of each word is identical to the first letter the following word (and not case sensitive, so &quot;A&quot; would be the same as &quot;a&quot;).  </p>
+<p>The following would be a smooth sentence &quot;Carlos swam masterfully&quot; because &quot;Carlos&quot; ends with an &quot;s&quot; and swam begins with an &quot;s&quot; and swam ends with an &quot;m&quot; and masterfully begins with an &quot;m&quot;.  </p>
+<p>Create a function that determines whether the input sentence is a smooth sentence, returning a boolean value true if it is, false if it is not.</p>
+<p>Notes  </p>
+<ul>
+<li>The last and first letters are case insensitive.</li>
+<li>There will be no punctuation in each sentence.</li>
+</ul>
+<pre><code>function isSmooth(str){
+    str = str.split(&#39; &#39;);
+    for(let i = 0; i &lt; str.length - 1; i++){
+        if( str[i][str[i].length - 1] !== str[i+1][0]) return false
+    }
+    return true;
+};
+
+console.log(isSmooth(&quot;Marta appreciated deep perpendicular right trapezoids&quot;)) // true
+
+console.log(isSmooth(&quot;Someone is outside the doorway&quot;)) // false
+
+console.log(isSmooth(&quot;She eats super righteously&quot;)) // true
+</code></pre>
+<h1 id="exercise-04-seven-boom">Exercise 04: Seven Boom</h1>
+<p>Create a function that takes an array of numbers and return &quot;Boom!&quot; if the digit 7 appears in the array. Otherwise, return &quot;there is no 7 in the array&quot;.</p>
+<pre><code>function sevenBoom(arr){
+    arr = arr.join(&#39;&#39;);
+    for(let num of arr){
+        if(num === &#39;7&#39;) return &quot;Boom!&quot;;
+    }
+    return &quot;There is no 7 in the array&quot;;
+}
+
+console.log(sevenBoom([1, 2, 3, 4, 5, 6, 7])); // &quot;Boom!&quot;
+// 7 contains the number seven.
+
+console.log(sevenBoom([8, 6, 33, 100])); // &quot;there is no 7 in the array&quot;
+// None of the items contain 7 within them.
+
+console.log(sevenBoom([2, 55, 60, 97, 86])); // &quot;Boom!&quot;
+// 97 contains the number seven.
+</code></pre>
+<h1 id="exercise-05-convert-celsius--fahrenheit">Exercise 05: Convert Celsius / Fahrenheit</h1>
+<p>Create a function that converts Celsius to Fahrenheit and vice versa.</p>
+<p>Notes  </p>
+<ul>
+<li>Round to the nearest integer.</li>
+<li>If the input is incorrect, return &quot;Error&quot;.</li>
+<li>Look on Google how to convert F to C and vice-versa</li>
+</ul>
+<pre><code>function convert(temp){
+    const arr = temp.split(&#39;&#39;);
+    const degrees = parseInt(arr.splice(0,arr.indexOf(&#39;°&#39;)).join(&#39;&#39;));
+    if(temp.includes(&#39;°C&#39;)){
+        return `${Math.round(degrees * 9/5 + 32)}°F` ;
+    } 
+    else if(temp.includes(&#39;°F&#39;)){
+        return `${Math.round((degrees - 32) * 5/9)}°C` ;
+    } 
+    return &quot;Error&quot;;
+};
+
+console.log(convert(&quot;35°C&quot;)); // &quot;95°F&quot;
+
+console.log(convert(&quot;19°F&quot;)); // &quot;-7°C&quot;
+
+console.log(convert(&quot;33&quot;)); // &quot;Error&quot;
+</code></pre>
+<h1 id="exercise-06-broken-keys">Exercise 06: Broken Keys</h1>
+<p>Given what is supposed to be typed and what is actually typed, write a function that returns the broken key(s). The function looks like:</p>
+<p>Notes  </p>
+<ul>
+<li>Broken keys should be ordered by when they first appear in the sentence.</li>
+<li>Only one broken key per letter should be listed.</li>
+<li>Letters will all be in lower case.</li>
+</ul>
+<pre><code>function findBrokenKeys(right, wrong){
+    const brokenKeys = [];
+    for(let i = 0; i &lt; right.length; i++){
+        if(right[i] !== wrong[i] &amp;&amp; brokenKeys.indexOf(right[i]) === -1){
+            brokenKeys.push(right[i])
+        }
+    }
+    return brokenKeys;
+}
+
+console.log(findBrokenKeys(&quot;happy birthday&quot;, &quot;hawwy birthday&quot;)); // [&quot;p&quot;]
+
+console.log(findBrokenKeys(&quot;starry night&quot;, &quot;starrq light&quot;)); // [&quot;y&quot;, &quot;n&quot;]
+
+console.log(findBrokenKeys(&quot;beethoven&quot;, &quot;affthoif5&quot;)); // [&quot;b&quot;, &quot;e&quot;, &quot;v&quot;, &quot;n&quot;]
+</code></pre>
+
+</body>
+</html>

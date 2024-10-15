@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms Optional</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f2de;
+        }
+        code {
+            background-color: #151b23;
+        }
+        pre {
+            display: block;
+            background-color: #151b23;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="exercise-1-remove-duplicates">Exercise 1: Remove Duplicates</h1>
+<p>Create a function that remove duplicates from an array.</p>
+<pre><code>const removeDuplicates = (arr) =&gt; arr.filter((a, index) =&gt; arr.indexOf(a) === index);
+
+console.log(removeDuplicates([4, 9, 5, 1, 3, 2, 4, 1, 8]));
+// [4, 9, 5, 1, 3, 2, 8]
+
+console.log(removeDuplicates([&quot;hello&quot;, &quot;world&quot;, &quot;goodbye&quot;, &quot;world&quot;]));
+// [&#39;hello&#39;, &#39;world&#39;, &#39;goodbye&#39;]
+
+console.log(removeDuplicates([true, true, false, true, true, false]));
+// [true, false]
+</code></pre>
+<h1 id="exercise-2-capitalize">Exercise 2: Capitalize</h1>
+<p>Create a function that capitalizes a string.</p>
+<pre><code>const capitalize = (str) =&gt; str.charAt(0).toUpperCase() + str.slice(1);
+
+console.log(capitalize(&quot;belgium&quot;)); // &quot;Belgium&quot;
+
+console.log(capitalize(&quot;brazil&quot;)); // &quot;Brazil&quot;
+
+console.log(capitalize(&quot;brussels&quot;)); // &quot;Brussels&quot;
+</code></pre>
+<h1 id="exercise-3-day-difference">Exercise 3: Day Difference</h1>
+<p>Find the days between 2 given days</p>
+<pre><code>const dayDif = (date1,date2) =&gt; Math.abs((date1.valueOf() / 86400000) - (date2.valueOf() / 86400000)); 
+
+console.log(dayDif(new Date(&quot;2020-10-21&quot;), new Date(&quot;2021-10-22&quot;))); //  366
+</code></pre>
+<h1 id="exercise-4-average-of-array">Exercise 4: Average of Array</h1>
+<p>Find the average between multiple numbers using reduce method.</p>
+<pre><code>const average = (...num) =&gt; num.reduce((a, b) =&gt; a + b) / num.length;
+
+console.log(average(1, 2, 3, 4)); //  2.5
+</code></pre>
+<h1 id="exercise-5-smallest-of-array">Exercise 5: Smallest of Array</h1>
+<p>Get the Smallest Element of an Array</p>
+<pre><code>const getSmallest = arr =&gt; Math.min(...arr);
+
+console.log(getSmallest([13, 7, 11, 3, 9, 15, 17])); // 3
+</code></pre>
+<h1 id="exercise-6-equal-arrays">Exercise 6: Equal Arrays</h1>
+<p>Check if Two Arrays Contain the Same Values</p>
+<pre><code>const areEqual = (arr1, arr2) =&gt; arr1.length !== arr2.length ? false : parseInt(arr1.sort().toString().split(&#39;,&#39;).join(&#39;&#39;)) === parseInt(arr2.sort().toString().split(&#39;,&#39;).join(&#39;&#39;));
+
+const arr1 = [1, 2, 3, 4];
+const arr2 = [3, 1, 4, 2];
+const arr3 = [1, 2, 3];
+
+console.log(areEqual(arr1, arr2)); // true
+
+console.log(areEqual(arr1, arr3)); // false
+</code></pre>
+<h1 id="exercise-7-random-rgb-color">Exercise 7: Random RGB Color</h1>
+<p>Create a function that generates a random rgb value. The outcome should be the same as we declare it in CSS : rgb(?, ?, ?)</p>
+<pre><code>const randomRGB = () =&gt; `rgb(${Math.floor(Math.random() * 255 + 1)}, ${Math.floor(Math.random() * 255 + 1)}, ${Math.floor(Math.random() * 255 + 1)})`;
+
+console.log(randomRGB()); // &quot;rgb(12, 210, 37)&quot;
+</code></pre>
+<h1 id="exercise-8-letter-occurencies">Exercise 8: Letter Occurencies</h1>
+<p>Create a function that takes a string and a letter and counts how many times the letter appears in the string</p>
+<pre><code>const occurencies = (string, letter) =&gt; string.split(&#39;&#39;).filter((a) =&gt; a.includes(letter)).length;
+
+console.log(occurencies(&quot;hello&quot;, &quot;l&quot;)); // 2
+
+console.log(occurencies(&quot;abracadabra&quot;, &quot;a&quot;)); // 5
+
+console.log(occurencies(&quot;oups&quot;, &quot;z&quot;)); // 0
+</code></pre>
+<h1 id="exercise-9-sum-of-positives">Exercise 9: Sum of Positives</h1>
+<p>Create a function that returns the sum of all positive numbers in an array. (negative numbers should be ignored). If only negative numbers are present, it should return 0</p>
+<pre><code>const onlyPositives = (arr) =&gt; arr.filter((a) =&gt; a &gt; 0).length &lt; 1 ? 0 : arr.filter((a) =&gt; a &gt; 0).reduce((a, b) =&gt; a + b);
+
+console.log(onlyPositives([1, 6, 2, -3, 5, -12])); // 14
+
+console.log(onlyPositives([-3, -4, -2])); // 0
+</code></pre>
+<h1 id="exercise-10-find-in-array-of-object">Exercise 10: Find in Array of Object</h1>
+<p>Create a function that takes an array of objects and an object with one key/value pair as arguments. The function should return every entries that are the same than the object.</p>
+<pre><code>const scanAndFind = (array, property) =&gt; array.filter(o =&gt; Object.entries(o).flat().includes(Object.entries(property).flat()[1]));
+
+console.log(scanAndFind(
+  [
+    { firstName: &quot;Vito&quot;,
+      lastName: &quot;Corleone&quot;,
+    },
+    { firstName: &quot;Jon&quot;,
+      lastName: &quot;Snow&quot;,
+    },
+    { firstName: &quot;Harry&quot;,
+      lastName: &quot;Potter&quot;,
+    },
+    { firstName: &quot;Michal&quot;,
+      lastName: &quot;Corleone&quot;,
+    },
+  ],
+  { lastName: &quot;Corleone&quot;,}
+));
+
+// Result : [{firstName: Vito, lastName: Corleone}, {firstName: Michael, lastName: Corleone}]
+
+console.log(scanAndFin(
+  [
+    { fullName: &quot;Roi Baudoin&quot;, id: 49762 },
+    { fullName: &quot;Margareth Tatcher&quot;, id: 94357 },
+    { fullName: &quot;Barack Obama&quot;, id: 76458 },
+    { fullName: &quot;Emmanuel Macron&quot;, id: 10687 },
+    { fullName: &quot;Charles de Gaulle&quot;, id: 67098 },
+    { fullName: &quot;Boris Johnson&quot;, id: 16437 },
+  ],
+  { id: 10687 }
+));
+// Result : [{fullName: &quot;Emmanuel Macron&quot;, id: 10687}]
+</code></pre>
+
+</body>
+</html>

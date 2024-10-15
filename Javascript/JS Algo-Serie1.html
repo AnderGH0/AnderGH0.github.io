@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms Serie 1</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f2de;
+        }
+        code {
+            background-color: #151b23;
+        }
+        pre {
+            display: block;
+            background-color: #151b23;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="exercise-00-makes-ten">Exercise 00: Makes Ten</h1>
+<p>Create a function that takes two arguments. Both arguments are integers, a and b. Return true if one of them is 10 or if their sum is 10.</p>
+<pre><code>function makesTen(a, b){
+    return a === 10 || b === 10 || a + b === 10;
+}
+
+console.log(makesTen(9, 10)); // true
+
+console.log(makesTen(9, 9)); // false
+
+console.log(makesTen(1, 9)); // true
+</code></pre>
+<h1 id="exercise-01-calculate-age">Exercise 01: Calculate Age</h1>
+<p>Create a function that takes the age in years and returns the age in days.</p>
+<pre><code>function calcAge(age){
+    return age * 365;
+}
+
+console.log(calcAge(65)); // 23725
+
+console.log(calcAge(0)); // 0
+
+console.log(calcAge(20)); // 7300
+</code></pre>
+<h1 id="exercise-02-add-up">Exercise 02: Add Up</h1>
+<p>Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function. For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.</p>
+<pre><code>function addUp(number){
+    let total= 0;
+    for(let i= 1; i &lt;= number; i++){
+        total += i;
+    }
+    return total;
+}
+
+console.log(addUp(4)); // 10
+
+console.log(addUp(13)); // 91
+
+console.log(600); // 180300
+</code></pre>
+<h1 id="exercise-03-min-and-max">Exercise 03: Min and Max</h1>
+<p>Create a function that takes an array of numbers and return both the minimum and maximum numbers, in that order.</p>
+<pre><code>function minMax(arr){
+    return [Math.min(...arr), Math.max(...arr)]
+}; 
+
+console.log(minMax([1, 2, 3, 4, 5])); // [1, 5]
+
+console.log(minMax([2334454, 5])); // [5, 2334454]
+
+console.log(minMax([1])); // [1, 1]
+</code></pre>
+<h1 id="exercise-04-detect-lowercase-word">Exercise 04: Detect Lowercase Word</h1>
+<p>A word is on the loose and now has tried to hide amongst a crowd of tall letters! Help write a function to detect what the word is, knowing the following rules:</p>
+<ul>
+<li>The wanted word is in lowercase.</li>
+<li>The crowd of letters is all in uppercase.</li>
+<li>Note that the word will be spread out amongst the random letters, but their letters remain in the same order.</li>
+</ul>
+<pre><code>function detectWord(str){
+    let word = &#39;&#39;;
+    for(let letter of str){
+        if(letter === letter.toLowerCase()){
+            word += letter;
+        }
+    }
+    return word;
+};
+
+console.log(detectWord(&quot;UcUNFYGaFYFYGtNUH&quot;)); // &quot;cat&quot;
+
+console.log(detectWord(&quot;bEEFGBuFBRrHgUHlNFYaYr&quot;)); // &quot;burglar&quot;
+
+console.log(detectWord(&quot;YFemHUFBbezFBYzFBYLleGBYEFGBMENTment&quot;)); // &quot;embezzlement&quot;
+</code></pre>
+<h1 id="exercise-05-sort-drinks">Exercise 05: Sort Drinks</h1>
+<p>You will be given an array of drinks, with each drink being an object with two properties: name and price. Create a function that has the drinks array as an argument and return the drinks objects sorted by price in ascending order.</p>
+<pre><code>const drinks = [
+    {name: &quot;lemonade&quot;, price: 10},
+    {name: &quot;lime&quot;, price: 10},
+    {name: &quot;coke&quot;, price: 8},
+    {name: &quot;vodka&quot;, price: 17},
+    {name: &quot;water&quot;, price: 3},
+];
+
+function sortDrinkByPrice(drinks){
+    return drinks.sort((a,b) =&gt; a.price - b.price)
+}
+
+console.log(sortDrinkByPrice(drinks)); 
+/*
+[
+    {name: &#39;water&#39;, price: 3 },
+    {name: &#39;coke&#39;, price: 8 },
+    {name: &#39;lemonade&#39;, price: 10 },
+    {name: &#39;lime&#39;, price: 10 },
+    {name: &#39;vodka&#39;, price: 17 }
+]
+*/
+</code></pre>
+<h1 id="exercise-06-count-animal-legs">Exercise 06: Count Animal Legs</h1>
+<p>In this challenge, a farmer is asking you to tell him how many legs can be counted among all his animals. The farmer breeds three species:</p>
+<ul>
+<li>chickens = 2 legs</li>
+<li>cows = 4 legs</li>
+<li>pigs = 4 legs</li>
+</ul>
+<p>The farmer has counted his animals and he gives you a subtotal for each species. You have to implement a function that returns the total number of legs of all the animals.</p>
+<pre><code>function animals(chickens, cows, pigs){
+    return (chickens * 2) + (cows * 4) + (pigs * 4);  
+}
+
+console.log(animals(2, 3, 5)); // 36
+
+console.log(animals(1, 2, 3)); // 22
+
+console.log(animals(5, 2, 8)); // 50
+</code></pre>
+<h1 id="exercise-07-profitable-gamble">Exercise 07: Profitable Gamble</h1>
+<p>Create a function that takes three arguments probability, prize, pay and returns true if probability * prize &gt; pay; otherwise return false. </p>
+<p>To illustrate:<br><code>profitableGamble(0.2, 50, 9)</code><br>... should yield true, since the net profit is 1 (0.2 * 50 - 9), and 1 &gt; 0.  </p>
+<pre><code>function profitableGamble(probability, prize, pay){
+    return (probability * prize) - pay &gt; 0 
+}
+
+console.log(profitableGamble(0.2, 50, 9)); // true
+
+console.log(profitableGamble(0.9, 1, 2)); // false
+
+console.log(profitableGamble(0.9, 3, 2)); // true
+</code></pre>
+<h1 id="exercise-08-fps">Exercise 08: FPS</h1>
+<p>Create a function that returns the number of frames shown in a given number of minutes for a certain FPS.</p>
+<pre><code>function frames(frames, minutes){
+    return frames * (minutes * 60);
+}
+
+console.log(frames(1, 1)); // 60
+
+console.log(frames(10, 1)); // 600
+
+console.log(frames(10, 25)); // 15000
+</code></pre>
+<h1 id="exercise-09-fuel-needed">Exercise 09: Fuel Needed</h1>
+<p>A vehicle needs 10 times the amount of fuel than the distance it travels. However, it must always carry a minimum of 100 fuel before setting off.
+Create a function which calculates the amount of fuel it needs, given the distance.</p>
+<pre><code>function calculateFuel(distance){
+    return Math.max(distance*10,100); 
+}
+
+console.log(calculateFuel(15)); // 150
+
+console.log(calculateFuel(23.5)); // 235
+
+console.log(calculateFuel(3)); // 100
+</code></pre>
+</body>
+</html>
