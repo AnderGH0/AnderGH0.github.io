@@ -1,0 +1,55 @@
+
+body {
+    background-color: gold;
+}
+.b, .c, .d, .e {
+    display: none;
+}
+
+@media screen and (min-width:768px){
+    body {
+        background-color: pink;
+    }
+    .a, .c, .d, .e {
+        display: none;
+    }
+    .b {
+        display: contents;
+    }
+}
+
+@media screen and (min-width:1280px){
+    body {
+        background-color: chocolate;
+    }
+    .a, .b, .d, .e {
+        display: none;
+    }
+    .c {
+        display: contents;
+    }
+}
+
+@media screen and (min-width:1440px){
+    body {
+        background-color: cadetblue;
+    }
+    .a, .b, .c, .e {
+        display: none;
+    }
+    .d {
+        display: contents;
+    }
+}
+
+@media screen and (min-width:1920px){
+    body {
+        background-color: cornflowerblue;
+    }
+    .a, .b, .c, .d {
+        display: none;
+    }
+    .e {
+        display: contents;
+    }
+}

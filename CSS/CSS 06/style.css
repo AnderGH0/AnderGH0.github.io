@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Allan:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols:wght@100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2D4480;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-transform: uppercase;
+}
+
+.container {
+    width: 288px;
+    height: 503px;
+    border-radius: 27px;
+    position: relative;
+}
+
+.white {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 288px;
+    height: 469px;
+    border-radius: 27px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    padding: 35px 0px;
+}
+
+.basic{
+    font-family: "Noto Sans Symbols";
+    font-size: 36px;
+    color: #292929;
+    font-weight: 300;
+    line-height: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.one, .two, .three, .four, .five {
+    display: flex;
+    align-content: flex-end;
+    align-self: center;
+    width: 200px;;
+    height: 33px;
+    display: flex;  
+    margin-top: 6px;
+    align-items: center;
+}
+
+.image {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.feat {
+    font-family: 'Noto Sans Symbols';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 32.8px;
+    color: rgba(0, 0, 0, 0.90);
+    margin-left: 20px;
+}
+
+hr {
+    border: 1px solid rgb(0, 0, 0);
+    width: 188px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    align-self: center;
+}
+
+.free {
+    font-family: 'Noto Sans Symbols';
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    color: #292929;
+    align-self: center;
+    letter-spacing: 4px;
+}
+
+.forever {
+    font-family: 'Allan';
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    text-transform: none;
+    color: #2D4480;
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-right: 64px;
+}
+
+.button {
+    background-color: #FFBC0F;
+    border-radius: 27px;
+    margin: auto;
+    width: 181px;
+    height: 68px;
+    top:200;
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.bText {
+    font-family: 'Noto Sans Symbols';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 32.8px;
+    text-align: center;
+    color: rgba(37, 56, 104, 0.94);
+    display: inline;
+    align-content: center;
+    align-self: center;
+}

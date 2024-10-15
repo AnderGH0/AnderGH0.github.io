@@ -1,0 +1,52 @@
+
+$pink: hsla(355, 73%, 64%, 0.75);
+$gold: #E8AB36;
+$false-white: hsla(0, 0%, 100%, 0.5);
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0px auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@mixin my-button($color:#000, $background:#FFF) {
+    border: none;
+    font-size: 12px;
+    font-weight: 500;    
+    align-content: center;
+    max-width: 152px;
+    height: 43px;
+    border-radius: 75px;
+    padding: 13px 33px;
+    background-color: $background;
+    color: $color;
+}
+
+@mixin my-circle(){
+    width: 48px;
+    height: 48px;
+    background-color: #6357F6;
+    border-radius: 48%;
+}
+
+@mixin font($family, $size, $weight, $lineHeight:1rem, $color:black){
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
+    color: $color;
+}
