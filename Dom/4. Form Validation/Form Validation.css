@@ -1,0 +1,39 @@
+body {
+  background-color: rgb(64, 62, 62);
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  background-color: rgb(120, 120, 104);
+  display: inline-block;
+}
+form label {
+  display: block;
+  padding: 5px 10px;
+}
+form label input {
+  background-color: rgb(93, 102, 76);
+  border: 2px double darkslategray;
+}
+form label input:focus {
+  outline: none;
+}
+form .submit-btn {
+  border-radius: 5px;
+  padding: 8px;
+  display: flex;
+  margin: 10px auto;
+  background-color: rgb(93, 102, 76);
+  border: 2px double darkslategray;
+}
+form .submit-btn:hover {
+  color: goldenrod;
+  cursor: pointer;
+}
+form p {
+  color: "red";
+  margin: 4px 10px;
+}

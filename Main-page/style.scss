@@ -17,6 +17,25 @@ a {
     text-decoration: none;
     color: #3d423e;
 }
+.list {
+    height: 50px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap:16px;
+    a:visited {
+        color: #3d423e;
+    }
+    a:hover{
+        text-align: center;
+        display: inline-block;
+        color: #cdd2ce;
+        background-color: #3d423e;
+        border-radius: 5px;
+    }
+}
 body {
     background-image: linear-gradient(90deg,#2d4480, #3e548b, #475a89, #54648b);
     color: #202221;
@@ -35,25 +54,6 @@ body {
                 background-color:  #ceece0;
                 h2 {
                     padding-left: 10px;
-                }
-                .js .list, .css .list {
-                    height: 50px;
-                    font-size: 1.5rem;
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-around;
-                    gap:16px;
-                    a:visited {
-                        color: #3d423e;
-                    }
-                    a:hover{
-                        text-align: center;
-                        display: inline-block;
-                        color: #cdd2ce;
-                        background-color: #3d423e;
-                        border-radius: 5px;
-                    }
                 }
             }
         }

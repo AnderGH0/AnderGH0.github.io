@@ -21,6 +21,26 @@ a {
   color: #3d423e;
 }
 
+.list {
+  height: 50px;
+  font-size: 1.5rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 16px;
+}
+.list a:visited {
+  color: #3d423e;
+}
+.list a:hover {
+  text-align: center;
+  display: inline-block;
+  color: #cdd2ce;
+  background-color: #3d423e;
+  border-radius: 5px;
+}
+
 body {
   background-image: linear-gradient(90deg, #2d4480, #3e548b, #475a89, #54648b);
   color: #202221;
@@ -41,22 +61,3 @@ body main .container ul {
 body main .container ul h2 {
   padding-left: 10px;
 }
-body main .container ul .js .list, body main .container ul .css .list {
-  height: 50px;
-  font-size: 1.5rem;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 16px;
-}
-body main .container ul .js .list a:visited, body main .container ul .css .list a:visited {
-  color: #3d423e;
-}
-body main .container ul .js .list a:hover, body main .container ul .css .list a:hover {
-  text-align: center;
-  display: inline-block;
-  color: #cdd2ce;
-  background-color: #3d423e;
-  border-radius: 5px;
-}/*# sourceMappingURL=style.css.map */

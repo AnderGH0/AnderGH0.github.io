@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Form Validation.css">
+</head>
+<body>
+    <form method="GET">
+        <label for="username">Username:<br>
+            <input type="text" id="username" class="username">
+        </label>
+        <p class="user-msg hidden">Invalid username!</p>
+        <label for="e-mail">E-mail:<br>
+            <input type="email" id="e-mail" class="email">
+        </label>
+        <p class="email-msg hidden">Invalid email!</p>
+        <label for="password">Password:<br>
+            <input type="password" id="password" class="password">
+        </label>
+        <p class="password-msg hidden">Invalid password</p>
+        <label for="confirm-password">Confirm Password:<br>
+            <input type="password" id="confirm-password" class="confirmPassword">
+        </label>
+        <p class="confirm-msg hidden">Passwords are not the same!</p>
+        <input class="submit-btn" type="submit" id="submit" value="Submit">
+    </form>
+    <script src="Form Validation.js"></script>
+</body>
+</html>
